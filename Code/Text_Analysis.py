@@ -16,11 +16,12 @@ def CreateDictionary(texts):
     #texts: List of List of words 
     print "\t Creating Dictionary of words and saving on disk"
      # remove words that appear only once
+    """
     all_tokens = sum(texts, [])
     tokens_once = set(word for word in set(all_tokens) if all_tokens.count(word) == 1)
     texts = [[word for word in text if word not in tokens_once]
              for text in texts]
-
+    """
     dictionary = corpora.Dictionary(texts)
     dictionary.save('deerwester.dict')
     return dictionary
@@ -79,13 +80,13 @@ def TransformFeatureDoc(texts,VectorfileName,num_topics=100):
     
     corpus_tfidf = tfidf[corpus]
     print "\t Number of topic are: ",num_topics
-    lda = models.LdaModel(corpus_tfidf, id2word=dictionary, num_topics=100)
+    lda = models.LdaModel(corpus_tfidf, id2word=dictionary, num_topics=20)
     #lsi = models.LsiModel(corpus_tfidf, id2word=dictionary, num_topics=2) # initialize an LSI transformation
     corpus_lda = lda[corpus_tfidf] # create a double wrapper over the original corpus: bow->tfidf->fold-in-lsi
     return corpus_lda
     
 
-def getDocumentFeatures(TopicModel_data, num_topics=100):
+def getDocumentFeatures(TopicModel_data, num_topics=20):
     
     #To convert the Masked LDA or LSA Transformed featured to Numpy format
     
@@ -99,7 +100,24 @@ def getDocumentFeatures(TopicModel_data, num_topics=100):
     return numpy_matrix.T
         
 
+def SaveModel(filename, model):
+    """
+    we are using use joblib.dump and joblib.load which is much more efficient
+    at handling numerical arrays than the default python pickler
+    """
+    #Joblib is included in scikit-learn
+    from sklearn.externals import joblib
+    _ = joblib.dump(model, filename, compress=9)
 
+def LoadModel(filename):
+
+    #Joblib is included in scikit-learn
+    from sklearn.externals import joblib
+    Model = joblib.load(filename)
+    return Model
+     
+     
+    
 
 
 

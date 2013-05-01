@@ -1,0 +1,58 @@
+	 Time is: 0.680000066757
+LOADING THE TRAINING DATA
+	 Data loaded succesfull: # of rows:  50001  # of Columns:  29  Length of review data:  50001
+	 Time is: 111.516000032
+
+	 Converting the Training Text Data to Topic Model
+	 Creating Document Vectors and saving on disk
+	 Number of topic are:  100
+	 Converted into review features in Topics, it has # of rows:  50001  # of Columns:  20 	 Time is: 250.160000086
+
+	 Time is: 250.773999929
+
+	 Deleted the unrequired columns
+	 Missing Values: Added mean values in the missing data
+	 Time is: 250.90899992
+
+	 Transformed the features
+	 Time is: 250.996000051
+
+	 Fit the model:  svr
+	 Time is: 663.085000038
+
+LOADING THE VALIDATION DATA
+	 Data loaded succesfull: # of rows:  5835  # of Columns:  29  Length of review data:  5835
+	 Time is: 674.398999929
+
+	 Converting the Validation Text Data to Topic Model
+	 Creating Document Vectors and saving on disk
+	 Number of topic are:  100
+	 Converted into review features in Topics, it has # of rows:  5835  # of Columns:  20 	 Time is: 806.997999907
+
+	 Deleted the unrequired columns
+	 Missing Values: Added mean values in the missing data
+	 Time is: 809.203999996
+
+	 Transformed the features
+	 Time is: 809.276000023
+
+
+ Predicting the model result: 
+
+	 Time is: 840.991999865
+
+Mean Square Error on Validation data is:  2.51967733725
+R square error is:  0.118819471181
+Root Mean Square Log Error:  0.58805640323
+LOAD THE TEST DATA...
+	 Data loaded succesfull: # of rows:  22956  # of Columns:  29  Length of review data:  22956
+	 Time is: 888.744999886
+
+	 Converting the Testing Text Data to Topic Model
+	 Creating Document Vectors and saving on disk
+	 Number of topic are:  100
+	 Converted into review features in Topics, it has # of rows:  22956  # of Columns:  20 	 Time is: 955.664999962
+
+	 Deleted the unrequired columns:  user_given_average_star 	 Missing Values: Added mean values in the missing data
+	 Transformed the features
+	 Time is: 955.737999916
